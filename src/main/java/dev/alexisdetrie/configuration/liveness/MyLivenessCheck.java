@@ -1,4 +1,4 @@
-package dev.alexisdetrie;
+package dev.alexisdetrie.configuration.liveness;
 
 import org.eclipse.microprofile.health.HealthCheck;
 import org.eclipse.microprofile.health.HealthCheckResponse;
