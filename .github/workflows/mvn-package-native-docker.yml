@@ -23,5 +23,11 @@ jobs:
           cache: maven
       - name: Build native image with Maven
         run: mvn package -Pnative
+      - name: Docker login to registry
+        run: docker login ${{ secrets.CONTAINER_IMAGE_REGISTRY }} -u ${{ DOCKER_REGISTRY_LOGIN }} -p ${{ DOCKER_REGISTRY_PASSWORD }}
       - name: Build Docker image
         run: docker build -f src/main/docker/Dockerfile.native-micro -t alexisdetrie-dev/portfolio-function .
+      - name: Tag Docker image
+        run: docker tag alexisdetrie-dev/portfolio-function ${{ secrets.CONTAINER_IMAGE_REGISTRY }}/alexisdetrie-dev/portfolio-function:latest
+      - name: Push Docker image to registry
+        run: docker push ${{ secrets.CONTAINER_IMAGE_REGISTRY }}/alexisdetrie-dev/portfolio-function:latest
