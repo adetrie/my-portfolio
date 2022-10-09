@@ -21,5 +21,7 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
           cache: maven
-      - name: Build with Maven
-        run: mvn install -Pnative -Dquarkus.native.container-build=true -Dquarkus.container-image.build=true -Dquarkus.container-image.push=true -Dquarkus.container-image.registry=${{ secrets.QUARKUS_CONTAINER_IMAGE_REGISTRY }}
+      - name: Build native image with Maven
+        run: mvn package -Pnative
+      - name: Build Docker image
+        run: docker build -f src/main/docker/Dockerfile.native-micro -t alexisdetrie-dev/portfolio-function .
