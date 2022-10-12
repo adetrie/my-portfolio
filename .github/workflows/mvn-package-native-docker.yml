@@ -32,7 +32,5 @@ jobs:
           -Dquarkus.container-image.registry=rg.fr-par.scw.cloud
       - name: Docker login to registry
         run: docker login ${{ secrets.DOCKER_REGISTRY_URL }} -u nologin -p ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
-      - name: Tag Docker image
-        run: docker tag alexisdetrie-dev/portfolio-function ${{ secrets.DOCKER_REGISTRY_URL }}/alexisdetrie-dev/portfolio-function:latest
       - name: Push Docker image to registry
         run: docker push ${{ secrets.DOCKER_REGISTRY_URL }}/alexisdetrie-dev/portfolio-function:latest
