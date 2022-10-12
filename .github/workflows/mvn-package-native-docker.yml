@@ -25,8 +25,6 @@ jobs:
         run: mvn package -Pnative -Dquarkus.native.container-build=true -Dquarkus.container-image.build=true
       - name: Docker login to registry
         run: docker login ${{ secrets.DOCKER_REGISTRY_URL }} -u nologin -p ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
-      - name: Build Docker image
-        run: docker build -f src/main/docker/Dockerfile.native-micro -t alexisdetrie-dev/portfolio-function .
       - name: Tag Docker image
         run: docker tag alexisdetrie-dev/portfolio-function ${{ secrets.DOCKER_REGISTRY_URL }}/alexisdetrie-dev/portfolio-function:latest
       - name: Push Docker image to registry
