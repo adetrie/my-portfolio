@@ -22,7 +22,14 @@ jobs:
           distribution: 'adopt'
           cache: maven
       - name: Build native image with Maven
-        run: mvn package -Pnative -Dquarkus.native.container-build=true -Dquarkus.container-image.build=true
+        run: >
+          mvn package -Pnative 
+          -Dquarkus.native.container-build=true 
+          -Dquarkus.container-image.build=true
+          -Dquarkus.container-image.group=funcscwnsalexisdetriedev4n4lcixb/alexisdetrie-dev
+          -Dquarkus.container-image.name=portfolio-function
+          -Dquarkus.container-image.tag=latest
+          -Dquarkus.container-image.registry=rg.fr-par.scw.cloud
       - name: Docker login to registry
         run: docker login ${{ secrets.DOCKER_REGISTRY_URL }} -u nologin -p ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
       - name: Tag Docker image
