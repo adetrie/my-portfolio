@@ -29,3 +29,4 @@ jobs:
           -Dquarkus.container-image.password=${{ secrets.DOCKER_REGISTRY_PASSWORD }}
           -Dquarkus.container-image.registry=${{ secrets.DOCKER_REGISTRY_URL }}
           -Dquarkus.container-image.username=nologin
+          -Dquarkus.container-image.push=true
