@@ -44,4 +44,8 @@ public class User extends PanacheMongoEntity {
         this.educations = educations;
         this.skills = skills;
     }
+
+    public static User findMe() {
+        return find("me", true).singleResult();
+    }
 }
