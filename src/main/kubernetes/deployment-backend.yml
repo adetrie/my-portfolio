@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: my-portfolio-backend
-          image: rg.fr-par.scw.cloud/alexisdetrie-dev/my-portfolio-backend:1.0-SNAPSHOT
+          image: rg.fr-par.scw.cloud/alexisdetrie-dev/my-portfolio-backend:latest
           envFrom:
             - configMapRef:
                 name: cm-my-portfolio

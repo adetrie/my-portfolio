@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: my-portfolio-frontend
-          image: rg.fr-par.scw.cloud/alexisdetrie-dev/my-portfolio-frontend:1.0-SNAPSHOT
+          image: rg.fr-par.scw.cloud/alexisdetrie-dev/my-portfolio-frontend:latest
           imagePullPolicy: Always
 ---
 apiVersion: v1
