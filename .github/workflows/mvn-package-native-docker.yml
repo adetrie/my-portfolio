@@ -27,29 +27,45 @@ jobs:
           distribution: 'adopt'
           cache: maven
       - name: Build native image with Maven
-        run: mvn package -Pnative -Dquarkus.native.container-build=true -Dquarkus.container-image.build=true
+        run: mvn package -Pnative
+
       - name: Docker login to registry
         run: docker login ${{ secrets.DOCKER_REGISTRY_URL }} -u nologin -p ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+
+      - name: Docker build backend
+        run: docker build -f src/main/docker/Dockerfile.native-micro --no-cache --progress=plain -t ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio-backend:${{ github.sha }} .
+
       - name: Push Docker image to registry
-        run: docker push ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio-backend:latest
+        run: docker push ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio-backend:${{ github.sha }}
 
       - name: Docker build frontend
-        run: docker build -f src/main/docker/Dockerfile.front --no-cache --progress=plain -t ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio-frontend:latest .
+        run: docker build -f src/main/docker/Dockerfile.front --no-cache --progress=plain -t ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio-frontend:${{ github.sha }} .
+
       - name: Push Docker front image to registry
-        run: docker push ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio-frontend:latest
+        run: docker push ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio-frontend:${{ github.sha }}
 
       - name: Kubernetes login
         uses: azure/k8s-set-context@v1
         with:
           method: kubeconfig
           kubeconfig: ${{ secrets.KUBECONFIG_ALEXISDETRIE_DEV }}
-      - name: Deploy app to Kubernetes
+
+      - name: Deploy backend to Kubernetes
         uses: azure/k8s-deploy@v1
         with:
           namespace: default
           manifests: |
             src/main/kubernetes/deployment-backend.yml
             src/main/kubernetes/ingress-backend.yml
+          images: |
+            ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio-backend:${{ github.sha }}
+
+      - name: Deploy frontend to Kubernetes
+        uses: azure/k8s-deploy@v1
+        with:
+          namespace: default
+          manifests: |
             src/main/kubernetes/deployment-frontend.yml
             src/main/kubernetes/ingress-frontend.yml
-          force: true
+          images: |
+            ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio-frontend:${{ github.sha }}
