@@ -9,7 +9,7 @@ on:
   pull_request:
     branches: 
       - 'master'
-      - 'decvelop'
+      - 'develop'
 
 jobs:
   build:
@@ -36,7 +36,7 @@ jobs:
       - name: Docker build frontend
         run: docker build -f src/main/docker/Dockerfile.front --no-cache --progress=plain -t ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio-front:latest .
       - name: Push Docker front image to registry
-        run: docker push ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio-front:latest
+        run: docker push ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio-frontend:latest
 
       - name: Kubernetes login
         uses: azure/k8s-set-context@v1
