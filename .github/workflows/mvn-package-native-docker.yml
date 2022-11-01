@@ -1,10 +1,10 @@
 name: Maven / package -P native
 
-on:
-  push:
-    branches: [ "feature/**" ]
-  pull_request:
-    branches: [ "develop" ]
+#on:
+#  push:
+#    branches: [ "feature/**" ]
+#  pull_request:
+#    branches: [ "develop" ]
 
 jobs:
   build:
