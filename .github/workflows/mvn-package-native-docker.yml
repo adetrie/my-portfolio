@@ -1,5 +1,9 @@
 name: Maven / package -P native
 
+on:
+  push:
+    branches:    
+      - '*'
 #on:
 #  push:
 #    branches: [ "feature/**" ]
