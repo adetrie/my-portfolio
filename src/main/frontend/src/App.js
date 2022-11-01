@@ -16,7 +16,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload. Test. {process.env.REACT_APP_PORTFOLIO_BACKEND_BASEURL}
+          Edit <code>src/App.js</code> and save to reload. env: {process.env.REACT_APP_PORTFOLIO_BACKEND_BASEURL}
         </p>
         <a
           className="App-link"

@@ -38,6 +38,10 @@ jobs:
       - name: Push Docker front image to registry
         run: docker push ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio-frontend:latest
 
+      - name: Sleep for 30 seconds (waiting registry update)
+        run: sleep 30s
+        shell: bash
+
       - name: Kubernetes login
         uses: azure/k8s-set-context@v1
         with:
