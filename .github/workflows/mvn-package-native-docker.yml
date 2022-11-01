@@ -34,7 +34,7 @@ jobs:
         run: docker push ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio-backend:latest
 
       - name: Docker build frontend
-        run: docker build -f src/main/docker/Dockerfile.front --no-cache --progress=plain -t ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio-front:latest .
+        run: docker build -f src/main/docker/Dockerfile.front --no-cache --progress=plain -t ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio-frontend:latest .
       - name: Push Docker front image to registry
         run: docker push ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio-frontend:latest
 
