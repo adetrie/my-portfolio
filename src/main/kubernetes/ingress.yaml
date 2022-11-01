@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ing-my-portfolio
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  tls:
+    - hosts:
+        - "*.alexisdetrie.dev"
+        - alexisdetrie.dev
+      secretName: wildcard-scw-alexisdetrie-dev-tls
+  rules:
+    - host: api.alexisdetrie.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: svc-my-portfolio
+                port:
+                  number: 80

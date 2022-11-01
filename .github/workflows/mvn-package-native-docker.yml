@@ -32,3 +32,16 @@ jobs:
         run: docker login ${{ secrets.DOCKER_REGISTRY_URL }} -u nologin -p ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
       - name: Push Docker image to registry
         run: docker push ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio:latest
+
+      - name: Kubernetes login
+        uses: azure/k8s-set-context@v1
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.KUBECONFIG_ALEXISDETRIE_DEV }}
+      - name: Deploy app to Kubernetes
+        uses: azure/k8s-deploy@v1
+        with:
+          namespace: default
+          manifests: |
+            src/main/kubernetes/deployment.yml
+            src/main/kubernetes/ingress.yml
