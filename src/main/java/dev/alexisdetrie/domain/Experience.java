@@ -39,5 +39,5 @@ public abstract class Experience extends PanacheMongoEntity {
     @Getter @Setter
     private List<ExperienceItem> experienceItems;
 
-    public record ExperienceItem(String company, String description, String icon) {}
+
 }

@@ -1,3 +1,4 @@
+
 package dev.alexisdetrie.domain;
 
 import io.quarkus.mongodb.panache.PanacheMongoEntity;
@@ -6,27 +7,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 /**
- * Entity : represents an education
+ * Entity : represents experience details
  *
  * @author Alexis
  * @since 1.0.0
  */
 @AllArgsConstructor
 @NoArgsConstructor
-public class Education extends PanacheMongoEntity {
+public class ExperienceItem extends PanacheMongoEntity {
+    @Getter @Setter
+    private String company;
 
     @Getter @Setter
-    private String id;
+    private String description;
 
     @Getter @Setter
-    List<EducationItem> educationItems;
-
-    public Education(List<EducationItem> educationItems) {
-        this.educationItems = educationItems;
-    }
-
-
+    private String icon;
 }

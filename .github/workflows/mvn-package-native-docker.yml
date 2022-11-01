@@ -1,0 +1,29 @@
+name: Maven / package -P native
+
+on:
+  push:
+    branches: [ "feature/**" ]
+  pull_request:
+    branches: [ "develop" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    environment:
+      name: prod
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+          cache: maven
+      - name: Build native image with Maven
+        run: mvn package -Pnative -Dquarkus.native.container-build=true -Dquarkus.container-image.build=true
+      - name: Docker login to registry
+        run: docker login ${{ secrets.DOCKER_REGISTRY_URL }} -u nologin -p ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+      - name: Push Docker image to registry
+        run: docker push ${{ secrets.DOCKER_REGISTRY_URL }}/alexisdetrie-dev/portfolio-function:latest
