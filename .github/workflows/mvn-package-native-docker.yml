@@ -4,11 +4,12 @@ on:
   push:
     branches:    
       - '*'
-#on:
-#  push:
-#    branches: [ "feature/**" ]
-#  pull_request:
-#    branches: [ "develop" ]
+      - '*/*'
+      - '**'
+  pull_request:
+    branches: 
+      - 'master'
+      - 'decvelop'
 
 jobs:
   build:
