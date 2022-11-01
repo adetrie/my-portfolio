@@ -30,4 +30,4 @@ jobs:
       - name: Docker login to registry
         run: docker login ${{ secrets.DOCKER_REGISTRY_URL }} -u nologin -p ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
       - name: Push Docker image to registry
-        run: docker push ${{ secrets.DOCKER_REGISTRY_URL }}/alexisdetrie-dev/portfolio-function:latest
+        run: docker push ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio:latest
