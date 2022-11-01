@@ -31,7 +31,12 @@ jobs:
       - name: Docker login to registry
         run: docker login ${{ secrets.DOCKER_REGISTRY_URL }} -u nologin -p ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
       - name: Push Docker image to registry
-        run: docker push ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio:latest
+        run: docker push ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio-backend:latest
+
+      - name: Docker build frontend
+        run: docker build -f src/main/docker/Dockerfile.front --no-cache --progress=plain -t ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio-front:latest .
+      - name: Push Docker front image to registry
+        run: docker push ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio-front:latest
 
       - name: Kubernetes login
         uses: azure/k8s-set-context@v1
@@ -43,5 +48,7 @@ jobs:
         with:
           namespace: default
           manifests: |
-            src/main/kubernetes/deployment.yml
-            src/main/kubernetes/ingress.yml
+            src/main/kubernetes/deployment-backend.yml
+            src/main/kubernetes/ingress-backend.yml
+            src/main/kubernetes/deployment-frontend.yml
+            src/main/kubernetes/ingress-frontend.yml

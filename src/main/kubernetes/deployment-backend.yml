@@ -2,20 +2,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-portfolio
+  name: my-portfolio-backend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: my-portfolio
+      app: my-portfolio-backend
   template:
     metadata:
       labels:
-        app: my-portfolio
+        app: my-portfolio-backend
     spec:
       containers:
-        - name: my-portfolio
-          image: rg.fr-par.scw.cloud/alexisdetrie-dev/my-portfolio:latest
+        - name: my-portfolio-backend
+          image: rg.fr-par.scw.cloud/alexisdetrie-dev/my-portfolio-backend:1.0-SNAPSHOT
           envFrom:
             - configMapRef:
                 name: cm-my-portfolio
@@ -44,10 +44,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: svc-my-portfolio
+  name: svc-my-portfolio-backend
 spec:
   ports:
     - port: 80
       targetPort: 8080
   selector:
-    app: my-portfolio
+    app: my-portfolio-backend
