@@ -1,0 +1,59 @@
+name: Maven / package -P native
+
+on:
+  push:
+    paths:
+      - 'frontend/**'
+    branches:
+      - '*'
+      - '*/*'
+      - '**'
+  pull_request:
+    paths:
+      - 'frontend/**'
+    branches:
+      - 'master'
+      - 'develop'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    environment:
+      name: prod
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+          cache: maven
+      - name: Build native image with Maven
+        run: mvn package -Pnative --file backend/pom.xml
+
+      - name: Docker login to registry
+        run: docker login ${{ secrets.DOCKER_REGISTRY_URL }} -u nologin -p ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+
+      - name: Docker build backend
+        run: docker build -f backend/src/main/docker/Dockerfile.native-micro --no-cache --progress=plain -t ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio-backend:${{ github.sha }} .
+
+      - name: Push Docker image to registry
+        run: docker push ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio-backend:${{ github.sha }}
+
+      - name: Kubernetes login
+        uses: azure/k8s-set-context@v1
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.KUBECONFIG_ALEXISDETRIE_DEV }}
+
+      - name: Deploy backend to Kubernetes
+        uses: azure/k8s-deploy@v1
+        with:
+          namespace: default
+          manifests: |
+            backend/src/main/kubernetes/deployment-backend.yml
+            backend/src/main/kubernetes/ingress-backend.yml
+          images: |
+            ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio-backend:${{ github.sha }}
