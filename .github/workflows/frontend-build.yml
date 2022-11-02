@@ -1,4 +1,4 @@
-name: Maven / package -P native
+name: Frontend build
 
 on:
   push:
@@ -28,9 +28,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: cd frontend
-      - run: npm ci
-      - run: npm test
+      - run: npm --prefix frontend/ ci
+      - run: npm --prefix frontend/ test
 
       - name: Docker login to registry
         run: docker login ${{ secrets.DOCKER_REGISTRY_URL }} -u nologin -p ${{ secrets.DOCKER_REGISTRY_PASSWORD }}

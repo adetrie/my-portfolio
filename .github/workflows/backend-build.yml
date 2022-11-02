@@ -1,4 +1,4 @@
-name: Maven / package -P native
+name: Backend build
 
 on:
   push:
