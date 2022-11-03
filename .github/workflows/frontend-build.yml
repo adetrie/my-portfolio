@@ -4,28 +4,17 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - 'frontend/**'
-    branches:
-      - '*'
-      - '*/*'
-      - '**'
+      - frontend
   pull_request:
-    paths:
-      - 'frontend/**'
     branches:
       - 'master'
       - 'develop'
 
 jobs:
-  build:
-
+  npm-build:
     runs-on: ubuntu-latest
-    environment:
-      name: prod
-
     steps:
       - uses: actions/checkout@v3
-
       - uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -33,21 +22,24 @@ jobs:
       - run: npm --prefix frontend/ test
       - run: npm --prefix frontend/ run build
 
+  docker:
+    runs-on: ubuntu-latest
+    steps:
       - name: Docker login to registry
         run: docker login ${{ secrets.DOCKER_REGISTRY_URL }} -u nologin -p ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
-
       - name: Docker build frontend
         run: docker build -f frontend/Dockerfile.front --no-cache --progress=plain -t ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio-frontend:${{ github.sha }} .
-
       - name: Push Docker frontend image to registry
         run: docker push ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio-frontend:${{ github.sha }}
 
+  kubernetes:
+    runs-on: ubuntu-latest
+    steps:
       - name: Kubernetes login
         uses: azure/k8s-set-context@v1
         with:
           method: kubeconfig
           kubeconfig: ${{ secrets.KUBECONFIG_ALEXISDETRIE_DEV }}
-
       - name: Deploy frontend to Kubernetes
         uses: azure/k8s-deploy@v1
         with:

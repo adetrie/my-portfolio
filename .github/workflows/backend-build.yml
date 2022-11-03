@@ -4,25 +4,15 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - 'frontend/**'
-    branches:
-      - '*'
-      - '*/*'
-      - '**'
+      - backend
   pull_request:
-    paths:
-      - 'frontend/**'
     branches:
       - 'master'
       - 'develop'
 
 jobs:
-  build:
-
+  build-maven:
     runs-on: ubuntu-latest
-    environment:
-      name: prod
-
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 17
@@ -34,21 +24,24 @@ jobs:
       - name: Build native image with Maven
         run: mvn package -Pnative --file backend/pom.xml
 
+  docker:
+    runs-on: ubuntu-latest
+    steps:
       - name: Docker login to registry
         run: docker login ${{ secrets.DOCKER_REGISTRY_URL }} -u nologin -p ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
-
       - name: Docker build backend
         run: docker build -f backend/src/main/docker/Dockerfile.native-micro --no-cache --progress=plain -t ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio-backend:${{ github.sha }} .
-
       - name: Push Docker image to registry
         run: docker push ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio-backend:${{ github.sha }}
 
+  kubernetes:
+    runs-on: ubuntu-latest
+    steps:
       - name: Kubernetes login
         uses: azure/k8s-set-context@v1
         with:
           method: kubeconfig
           kubeconfig: ${{ secrets.KUBECONFIG_ALEXISDETRIE_DEV }}
-
       - name: Deploy backend to Kubernetes
         uses: azure/k8s-deploy@v1
         with:
