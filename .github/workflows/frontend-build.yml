@@ -52,7 +52,7 @@ jobs:
         with:
           namespace: default
           manifests: |
-            frontend/src/main/kubernetes/deployment-frontend.yml
-            frontend/src/main/kubernetes/ingress-frontend.yml
+            frontend/kubernetes/deployment-frontend.yml
+            frontend/kubernetes/ingress-frontend.yml
           images: |
             ${{ secrets.DOCKER_REGISTRY_URL }}/my-portfolio-frontend:${{ github.sha }}
