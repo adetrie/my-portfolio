@@ -1,2 +1,2 @@
 FROM nginx:1.23.2
-COPY src/main/frontend/build/ /usr/share/nginx/html
+COPY frontend/build/ /usr/share/nginx/html
