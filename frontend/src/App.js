@@ -1,34 +1,63 @@
-import logo from './logo.svg';
 import './App.css';
+import Home from "./components/Home";
+import AboutMe from "./components/AboutMe";
+import ContactMe from "./components/ContactMe";
+import HowItsWork from "./components/HowItsWork";
+import Skills from "./components/Skills";
+import XPPro from "./components/XPPro";
+import Studies from "./components/Studies";
+import Loader from "./components/Loader";
+import {useEffect, useState} from "react";
+import {AnimatePresence, motion} from "framer-motion";
 
 function App() {
-    console.log(process.env.REACT_APP_PORTFOLIO_BACKEND_BASEURL)
 
-  fetch(process.env.REACT_APP_PORTFOLIO_BACKEND_BASEURL + '/me')
-      .then(res => res.json())
-      .then((data) => {
+    const [data, setData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [errorMessage, setErrorMessage] = useState(null);
 
-      })
-      .catch(console.log);
+    useEffect(() => {
+        fetchPortfolioApi()
+    }, []);
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload. env: {process.env.REACT_APP_PORTFOLIO_BACKEND_BASEURL}
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    const renderPortfolio = (
+        <motion.div
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+            env: {process.env.REACT_APP_PORTFOLIO_BACKEND_BASEURL}
+            <Home>{data}</Home>
+            <AboutMe></AboutMe>
+            <Skills></Skills>
+            <XPPro></XPPro>
+            <Studies></Studies>
+            <HowItsWork></HowItsWork>
+            <ContactMe></ContactMe>
+        </motion.div>
+    );
+
+    const fetchPortfolioApi = () => {
+        setIsLoading(true);
+        fetch(process.env.REACT_APP_PORTFOLIO_BACKEND_BASEURL + '/me')
+            .then((response) => response.json())
+            .then((response) => {
+                setData(response.data)
+                setIsLoading(false)
+            })
+            .catch(() => {
+                setErrorMessage("Unable to fetch my portfolio 😢");
+                setIsLoading(false);
+            });
+    };
+
+    return (
+        <div>
+            <AnimatePresence>
+                {isLoading && <Loader/>}
+            </AnimatePresence>
+            {(!isLoading && errorMessage == null) && renderPortfolio}
+            {errorMessage && <div className="error">{errorMessage}</div>}
+        </div>
+    );
 }
+
 
 export default App;
