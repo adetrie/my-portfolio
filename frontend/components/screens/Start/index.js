@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const Home = () => {
+const Start = () => {
 
   useEffect(() => {
   }, []);
@@ -12,4 +12,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Start;
