@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import NavBar from "../components/screens/NavBar";
+import NavBar from "../components/navigation/NavBar";
 import AboutMe from "../components/screens/AboutMe";
 import Skills from "../components/screens/Skills";
 import XPPro from "../components/screens/XPPro";

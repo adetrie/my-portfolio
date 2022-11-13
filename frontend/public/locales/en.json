@@ -4,6 +4,16 @@
     "welcome-to-alexisdetrie-dev": "Welcome to alexisdetrie.dev",
     "reload-page": "Reload page"
   },
+  "navbar": {
+    "home": "Home",
+    "about-me": "About",
+    "my-xp": "Experiences",
+    "skills": "Skills",
+    "worked-with-me": "Partners",
+    "eduction": "Education",
+    "how-this-website-work": "Portfolio",
+    "contact": "Contact"
+  },
   "error": {
     "unable-to-fetch-default-data": "Unable to fetch my portfolio \uD83D\uDE22"
   }

@@ -4,6 +4,16 @@
     "welcome-to-alexisdetrie-dev": "Bienvenue sur alexisdetrie.dev",
     "reload-page": "Recharger la page"
   },
+  "navbar": {
+    "home": "Home",
+    "about-me": "A propos",
+    "my-xp": "Expériences",
+    "skills": "Compétences",
+    "worked-with-me": "Références",
+    "eduction": "Formation",
+    "how-this-website-work": "Portfolio",
+    "contact": "Me contacter"
+  },
   "error": {
     "unable-to-fetch-default-data": "Impossible de récupérer les données de mon portfolio \uD83D\uDE22"
   }
