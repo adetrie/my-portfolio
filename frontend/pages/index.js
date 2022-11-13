@@ -15,8 +15,8 @@ import {Button, Modal, Text} from "@nextui-org/react";
 export default function Home() {
 
   const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     fetchPortfolioApi()
@@ -36,26 +36,25 @@ export default function Home() {
   );
 
   const fetchPortfolioApi = () => {
-    setIsLoading(true);
     fetch(process.env.PORTFOLIO_BACKEND_BASEURL + '/me')
         .then((response) => response.json())
         .then((response) => {
           setData(response.data)
-          setIsLoading(false)
+          setIsLoaded(true)
         })
         .catch(() => {
-          setErrorMessage("Unable to fetch my portfolio 😢");
-          setIsLoading(false);
+          setIsLoaded(true);
+          setError(true);
         });
   };
 
   return (
       <div>
         <AnimatePresence>
-          {isLoading && <Loader/>}
+          {!isLoaded && <Loader/>}
         </AnimatePresence>
-        {(!isLoading && errorMessage == null) && renderPortfolio}
-        {errorMessage && <UnableToLoad></UnableToLoad>}
+        {(isLoaded && error === false) && renderPortfolio}
+        {error && <UnableToLoad></UnableToLoad>}
       </div>
   );
 }

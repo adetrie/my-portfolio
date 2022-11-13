@@ -1,42 +1,31 @@
-import {useEffect, useState} from 'react';
-import {Button, Checkbox, Input, Modal, Row, Text} from "@nextui-org/react";
-
-function Password(props) {
-    return null;
-}
+import {Button, Modal, Text} from "@nextui-org/react";
+import {t} from "i18next";
 
 const UnableToLoad = () => {
-    const [visible, setVisible] = useState(false);
-    const handler = () => setVisible(true);
-    const closeHandler = () => {
-        setVisible(false);
-        console.log("closed");
+    const reloadHandler = () => {
+        location.reload(true);
     };
-
-    useEffect(() => {
-    }, []);
 
     return (
         <div>
             <Modal
-                closeButton
                 blur
                 aria-labelledby="modal-title"
-                open={true}
-            >
+                open={true}>
                 <Modal.Header>
                     <Text id="modal-title" size={18}>
-                        Welcome to
                         <Text b size={18}>
-                            NextUI
+                            {t('common.welcome-to-alexisdetrie-dev')}
                         </Text>
+
                     </Text>
                 </Modal.Header>
                 <Modal.Body>
+                    {t('error.unable-to-fetch-default-data')}
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button auto onClick={closeHandler}>
-                        Recharger la page
+                    <Button auto onClick={reloadHandler}>
+                        {t('common.reload-page')}
                     </Button>
                 </Modal.Footer>
             </Modal>
