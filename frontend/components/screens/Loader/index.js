@@ -5,7 +5,7 @@ import Lottie from "lottie-react";
 import groovyWalkAnimation from "../../../public/lottie/lottieflow-loading.json";
 import {motion} from "framer-motion";
 
-const Loader = () => {
+const Loader = ({stopAnimation}) => {
 
     const variant = {
         hidden: {
@@ -28,6 +28,7 @@ const Loader = () => {
             <motion.div
                 exit="hidden"
                 variants={variant}
+                onAnimationComplete={() => stopAnimation(true)}
             >
                 <Lottie animationData={groovyWalkAnimation}/>
             </motion.div>
