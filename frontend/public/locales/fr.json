@@ -1,0 +1,10 @@
+{
+  "common": {
+    "alexisdetrie-dev": "alexisdetrie.dev",
+    "welcome-to-alexisdetrie-dev": "Bienvenue sur alexisdetrie.dev",
+    "reload-page": "Recharger la page"
+  },
+  "error": {
+    "unable-to-fetch-default-data": "Impossible de récupérer les données de mon portfolio \uD83D\uDE22"
+  }
+}
