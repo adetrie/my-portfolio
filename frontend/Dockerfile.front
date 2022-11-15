@@ -1,6 +1,6 @@
 FROM node:lts as dependencies
 WORKDIR /my-porfolio-frontend
-COPY package.json package-lock.json ./
+COPY frontend/package.json frontend/package-lock.json ./
 RUN yarn install --frozen-lockfile
 
 FROM node:lts as builder
