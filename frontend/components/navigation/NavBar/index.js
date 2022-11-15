@@ -1,11 +1,12 @@
-import {useEffect, useState} from 'react';
-import {Button, Navbar, Spacer, Text} from "@nextui-org/react";
+import {useEffect, useRef, useState} from 'react';
+import {Link, Navbar, Text} from "@nextui-org/react";
 import {motion} from "framer-motion";
 import {t} from "i18next";
 
 const NavBar = () => {
     const [variant, setVariant] = useState("underline");
     const [activeColor, setActiveColor] = useState("primary");
+    const toggleNavbar = useRef(null);
 
     const navigationArrayKey = ["home",
         "about-me",
@@ -31,27 +32,54 @@ const NavBar = () => {
     return (
         <Navbar isBordered={false} variant="sticky" css={"display: block"}>
             <Navbar.Brand>
-                <Text b color="inherit" hideIn="xs">{t('common.alexisdetrie-dev')}</Text>
+                <Text b color="inherit">{t('common.alexisdetrie-dev')}</Text>
             </Navbar.Brand>
+
             <motion.div initial="initial" animate="animate" variants={parentVariant}>
-                <Navbar.Content activeColor={activeColor} hideIn="xs" variants={variant}>
+                <Navbar.Content activeColor={activeColor} hideIn="sm" variants={variant}>
                     {
                         navigationArrayKey.map((item) => {
-                            return <NavBarItem text={t("navbar." + item)} link={"#" + item} isActive={false}/>
+                            return <NavBarItemLarge text={t("navbar." + item)} link={"#" + item} isActive={false}
+                                                    key={item}/>
                         })
                     }
                 </Navbar.Content>
             </motion.div>
+
+            <Navbar.Toggle aria-label="toggle navigation" showIn="sm" ref={toggleNavbar}/>
+            <Navbar.Collapse>
+                {
+                    navigationArrayKey.map((item) => {
+                        return <NavBarItemSmall text={t("navbar." + item)} link={"#" + item} key={item}/>
+                    })
+                }
+            </Navbar.Collapse>
         </Navbar>
     );
 
-    function NavBarItem({text, link, isActive}) {
+
+    function NavBarItemLarge({text, link, isActive}) {
         return <Navbar.Link isActive={isActive} href={link}>
             <motion.span className="child" variants={childrenVariant}>
                 {text}
             </motion.span>
         </Navbar.Link>
     }
+
+    function NavBarItemSmall({text, link}) {
+        return <Navbar.CollapseItem key={text}>
+                <Link
+                    color="inherit"
+                    css={{minWidth: "100%",}}
+                    href={link}
+                    onPress={()=> {console.log(toggleNavbar.current.click())}}
+
+                >
+                    {text}
+                </Link>
+            </Navbar.CollapseItem>
+    }
+
 };
 
 

@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from 'react';
-import PropTypes from 'prop-types';
+import React, {useEffect} from 'react';
 import {StyledLoader} from "./styles";
 import Lottie from "lottie-react";
 import groovyWalkAnimation from "../../../public/lottie/lottieflow-loading.json";

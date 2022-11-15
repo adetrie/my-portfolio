@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import {useEffect} from 'react';
 import {StyledPartnersSection} from "./styles";
 
 const Partners = () => {

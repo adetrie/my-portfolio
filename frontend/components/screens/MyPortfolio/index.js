@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import {useEffect} from 'react';
 import {StyledMyPortfolioSection} from "./styles";
 
 const MyPortfolio = () => {
