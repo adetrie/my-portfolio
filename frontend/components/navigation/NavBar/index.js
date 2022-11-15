@@ -9,11 +9,11 @@ const NavBar = () => {
 
     const navigationArrayKey = ["home",
         "about-me",
-        "my-xp",
+        "experiences",
         "skills",
-        "worked-with-me",
-        "eduction",
-        "how-this-website-work",
+        "partners",
+        "education",
+        "my-portfolio",
         "contact"];
 
     const parentVariant = {
@@ -29,25 +29,24 @@ const NavBar = () => {
     }, []);
 
     return (
-        <motion.div initial="initial" animate="animate" variants={parentVariant}>
-            <Navbar isBordered={true} variant="sticky">
-
-                <Navbar.Brand>
-                    <Text b color="inherit" hideIn="xs">{t('common.alexisdetrie-dev')}</Text>
-                </Navbar.Brand>
+        <Navbar isBordered={false} variant="sticky" css={"display: block"}>
+            <Navbar.Brand>
+                <Text b color="inherit" hideIn="xs">{t('common.alexisdetrie-dev')}</Text>
+            </Navbar.Brand>
+            <motion.div initial="initial" animate="animate" variants={parentVariant}>
                 <Navbar.Content activeColor={activeColor} hideIn="xs" variants={variant}>
                     {
                         navigationArrayKey.map((item) => {
-                            return <NavBarItem text={t("navbar." + item)}/>
+                            return <NavBarItem text={t("navbar." + item)} link={"#" + item} isActive={false}/>
                         })
                     }
                 </Navbar.Content>
-            </Navbar>
-        </motion.div>
+            </motion.div>
+        </Navbar>
     );
 
-    function NavBarItem({text}) {
-        return <Navbar.Link href="#">
+    function NavBarItem({text, link, isActive}) {
+        return <Navbar.Link isActive={isActive} href={link}>
             <motion.span className="child" variants={childrenVariant}>
                 {text}
             </motion.span>

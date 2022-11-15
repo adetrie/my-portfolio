@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
-import {StyledAboutMe} from "./styles";
+import {StyledMyPortfolioSection} from "./styles";
 
-const AboutMe = () => {
+const MyPortfolio = () => {
 
   useEffect(() => {
   }, []);
 
   return (
-      <StyledAboutMe id={"about-me"}>
-          AboutMe
+      <StyledMyPortfolioSection id={"my-portfolio"}>
+          MyPortfolio
           <br />
           <br />
           <br />
@@ -54,8 +54,8 @@ const AboutMe = () => {
           <br />
           <br />
           <br />
-      </StyledAboutMe>
+      </StyledMyPortfolioSection>
   );
 };
 
-export default AboutMe;
+export default MyPortfolio;

@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
-import {StyledAboutMe} from "./styles";
+import {StyledContact} from "./styles";
 
-const AboutMe = () => {
+const Contact = () => {
 
   useEffect(() => {
   }, []);
 
   return (
-      <StyledAboutMe id={"about-me"}>
-          AboutMe
+      <StyledContact id={"contact"}>
+          ContactMe
           <br />
           <br />
           <br />
@@ -54,8 +54,8 @@ const AboutMe = () => {
           <br />
           <br />
           <br />
-      </StyledAboutMe>
+      </StyledContact>
   );
 };
 
-export default AboutMe;
+export default Contact;

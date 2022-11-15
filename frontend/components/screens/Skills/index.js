@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import {StyledSkillsSection} from "./styles";
 
 const Skills = () => {
 
@@ -6,9 +7,54 @@ const Skills = () => {
   }, []);
 
   return (
-      <>
+      <StyledSkillsSection id={"skills"}>
           Skills
-      </>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+      </StyledSkillsSection>
   );
 };
 

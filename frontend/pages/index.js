@@ -2,14 +2,16 @@ import {useEffect, useState} from "react";
 import NavBar from "../components/navigation/NavBar";
 import AboutMe from "../components/screens/AboutMe";
 import Skills from "../components/screens/Skills";
-import XPPro from "../components/screens/XPPro";
-import Studies from "../components/screens/Studies";
-import HowItsWork from "../components/screens/HowItsWork";
-import ContactMe from "../components/screens/ContactMe";
-import {AnimatePresence, motion} from "framer-motion";
+import Experiences from "../components/screens/Experiences";
+import Education from "../components/screens/Education";
+import MyPortfolio from "../components/screens/MyPortfolio";
+import Contact from "../components/screens/Contact";
+import {AnimatePresence, motion, useScroll} from "framer-motion";
 import Loader from "../components/screens/Loader";
 import Start from "../components/screens/Start";
 import UnableToLoad from "../components/modals/UnableToLoad";
+import NavigationScroller from "../components/navigation/NavigationScroller";
+import Partners from "../components/screens/Partners";
 
 export default function Home() {
 
@@ -23,16 +25,20 @@ export default function Home() {
     }, []);
 
     const renderPortfolio = (
-        <motion.div>
-            <NavBar></NavBar>
-            <Start></Start>
-            <AboutMe></AboutMe>
-            <Skills></Skills>
-            <XPPro></XPPro>
-            <Studies></Studies>
-            <HowItsWork></HowItsWork>
-            <ContactMe></ContactMe>
-        </motion.div>
+        <>
+            <motion.div>
+                <NavigationScroller />
+                <NavBar></NavBar>
+                <Start></Start>
+                <AboutMe></AboutMe>
+                <Experiences></Experiences>
+                <Skills></Skills>
+                <Partners></Partners>
+                <Education></Education>
+                <MyPortfolio></MyPortfolio>
+                <Contact></Contact>
+            </motion.div>
+        </>
     );
 
 

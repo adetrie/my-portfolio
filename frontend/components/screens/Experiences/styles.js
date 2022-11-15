@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
-export const StyledStartSection = styled.section`
+export const StyledExperiencesSection = styled.section`
   padding-top: var(--nextui--navbarHeight);
 `;

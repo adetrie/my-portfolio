@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import {StyledStartSection} from "./styles";
 
 const Start = () => {
 
@@ -6,9 +7,54 @@ const Start = () => {
   }, []);
 
   return (
-      <>
+      <StyledStartSection id={"home"}>
           Home
-      </>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+      </StyledStartSection>
   );
 };
 
