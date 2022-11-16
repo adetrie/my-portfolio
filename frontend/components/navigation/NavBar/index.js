@@ -72,7 +72,7 @@ const NavBar = () => {
                     color="inherit"
                     css={{minWidth: "100%",}}
                     href={link}
-                    onPress={()=> {console.log(toggleNavbar.current.click())}}
+                    onPress={()=> toggleNavbar.current.click()}
 
                 >
                     {text}

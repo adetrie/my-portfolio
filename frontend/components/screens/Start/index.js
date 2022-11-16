@@ -7,8 +7,6 @@ const Start = () => {
 
 
     useEffect(() => {
-            console.log("here:" + startSectionRef.current.style.paddingTop)
-            // startSectionRef.current.style.paddingTop = "1000px"
     }, []);
 
     return (
