@@ -1,4 +1,3 @@
-import {Button, Modal, Text} from "@nextui-org/react";
 import {t} from "i18next";
 
 const UnableToLoad = () => {
@@ -8,27 +7,27 @@ const UnableToLoad = () => {
 
     return (
         <div>
-            <Modal
+            <div
                 blur
                 aria-labelledby="modal-title"
                 open={true}>
-                <Modal.Header>
-                    <Text id="modal-title" size={18}>
+                <header>
+                    <span id="modal-title" size={18}>
                         <Text b size={18}>
                             {t('common.welcome-to-alexisdetrie-dev')}
                         </Text>
 
-                    </Text>
-                </Modal.Header>
-                <Modal.Body>
+                    </span>
+                </header>
+                <div>
                     {t('error.unable-to-fetch-default-data')}
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button auto onClick={reloadHandler}>
+                </div>
+                <div>
+                    <button auto onClick={reloadHandler}>
                         {t('common.reload-page')}
-                    </Button>
-                </Modal.Footer>
-            </Modal>
+                    </button>
+                </div>
+            </div>
         </div>
     );
 };

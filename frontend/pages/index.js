@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
-import NavBar from "../components/navigation/NavBar";
 import AboutMe from "../components/screens/AboutMe";
+import Header from "../components/navigation/Header";
 import Skills from "../components/screens/Skills";
 import Experiences from "../components/screens/Experiences";
 import Education from "../components/screens/Education";
@@ -27,16 +27,18 @@ export default function Home() {
     const renderPortfolio = (
         <>
             <motion.div>
-                <NavigationScroller />
-                <NavBar></NavBar>
-                <Start></Start>
                 <AboutMe></AboutMe>
-                <Experiences></Experiences>
-                <Skills></Skills>
-                <Partners></Partners>
-                <Education></Education>
-                <MyPortfolio></MyPortfolio>
-                <Contact></Contact>
+                <NavigationScroller/>
+                <Header></Header>
+                <div className="body">
+                    <Start></Start>
+                    <Experiences></Experiences>
+                    <Skills></Skills>
+                    <Partners></Partners>
+                    <Education></Education>
+                    <MyPortfolio></MyPortfolio>
+                    <Contact></Contact>
+                </div>
             </motion.div>
         </>
     );

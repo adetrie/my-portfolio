@@ -1,0 +1,16 @@
+* {
+    text-decoration: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Open Sans", "Segoe UI", Helvetica, Arial;
+    /* background-color: #16123f; */
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+}

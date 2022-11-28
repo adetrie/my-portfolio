@@ -9,54 +9,27 @@ const Start = () => {
     useEffect(() => {
     }, []);
 
+
     return (
         <StyledStartSection id={"home"} ref={startSectionRef}>
-            Home
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
+            <div className="architect">
+                <img src="https://via.placeholder.com/400x600.png"/>
+                <div className="description-ad">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Assumenda
+                    ullam numquam voluptate quidem autem, libero iure quaerat non doloribus odio, sint
+                    incidunt!
+                    Adipisci possimus reprehenderit omnis eos quod ea provident.
+                </div>
+            </div>
+            <div className="developer">
+                <img src="https://via.placeholder.com/400x600.png"/>
+                <div className="description-ad">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Assumenda
+                    ullam numquam voluptate quidem autem, libero iure quaerat non doloribus odio, sint
+                    incidunt!
+                    Adipisci possimus reprehenderit omnis eos quod ea provident.
+                </div>
+            </div>
         </StyledStartSection>
     );
 };

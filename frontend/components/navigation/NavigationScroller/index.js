@@ -3,7 +3,7 @@ import {StyledNavigationScroller} from "./styles";
 import {useScroll, useSpring} from "framer-motion";
 
 const NavgationScroller = () => {
-    const { scrollYProgress } = useScroll();
+    const {scrollYProgress} = useScroll();
     const scaleX = useSpring(scrollYProgress, {
         stiffness: 100,
         damping: 30,
@@ -14,7 +14,7 @@ const NavgationScroller = () => {
     }, []);
 
     return (
-        <StyledNavigationScroller style={{ scaleX }}/>
+        <StyledNavigationScroller style={{scaleX}}/>
     );
 
 };
