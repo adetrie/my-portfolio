@@ -21,6 +21,28 @@ const Header = () => {
         "my-portfolio",
         "contact"];
 
+    // const divAnimation = anime({
+    //     targets: 'header',
+    //     backgroundColor: '#000',
+    //     elasticity: 200,
+    //     easing: 'easeInOutCubic',
+    //     autoplay: false,
+    //     opacity: 0.7
+    // });
+    const scrollPercent = () => {
+        const bodyST = document.body.scrollTop;
+        const docST = document.documentElement.scrollTop;
+        const docSH = document.documentElement.scrollHeight;
+        const docCH = document.documentElement.clientHeight;
+
+
+        return (docST + bodyST) / (docSH - docCH) * 100
+    }
+
+    window.onscroll = () => {
+        // divAnimation.seek((scrollPercent() / 100) * divAnimation.duration);
+    };
+
     const parentVariant = {
         initial: {opacity: 1},
         animate: {opacity: 1, transition: {staggerChildren: 0.12}}
@@ -49,12 +71,13 @@ const Header = () => {
                 <motion.nav className="navbar" initial="initial" animate="animate" variants={parentVariant}>
                     <div className="nav-links">
                         <ul>
-                            <li className="active"><a href="#start" className="nav-link">Home</a></li>
+                            <li key="toto" className="active"><a href="#start" className="nav-link">Home</a></li>
                             {
                                 navigationArrayKey.map((item, index) => {
-                                    return <li>
+                                    return <li
+                                        key={item}
+                                    >
                                         <a href={"#" + item} className="nav-link"
-                                           key={item}
                                            onClick={toggleMenu}
                                         >{t("navbar." + item)}</a>
                                     </li>
@@ -73,7 +96,7 @@ const Header = () => {
         </StyledHeader>
     );
 
-};
 
+};
 
 export default Header;

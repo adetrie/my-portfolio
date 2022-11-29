@@ -12,9 +12,6 @@ export const StyledExperiencesSection = styled.section`
     justify-self: stretch;
   }
 
-  .experience-item {
-  }
-
   .experience-grid > h1 {
     font-size: 2em;
     color: white;
@@ -45,6 +42,21 @@ export const StyledExperiencesSection = styled.section`
     grid-row-gap: 0px;
   }
 
+  .experience-item:before{
+    content: '';
+    position: absolute;
+    border-left: 1px solid #ffe26a;
+    transform: rotate(90deg);
+    height: 25px;
+    top: 50%;
+  } 
+  .experience-item-right:before{
+    left: -15px;
+  }
+  .experience-item-left:before{
+    right: -15px;
+  }
+
   .experience-item-empty {
   }
 
@@ -70,7 +82,6 @@ export const StyledExperiencesSection = styled.section`
     grid-area: 1 / 1 / 3 / 2;
     writing-mode: vertical-lr;
     text-orientation: revert;
-    padding: 5px 10px 10px 10px;
   }
 
   .experience-partner {
@@ -107,5 +118,11 @@ export const StyledExperiencesSection = styled.section`
     .experience-item-delimiter {
       background-color: #ffe26a;
     }
+    .experience-mobile-content > h1 {
+      font-size: 2em;
+      color: white;
+      margin: 90px 0 70px 40px;
+    }
+    
   }
 `;

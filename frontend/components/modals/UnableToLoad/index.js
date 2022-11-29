@@ -13,9 +13,9 @@ const UnableToLoad = () => {
                 open={true}>
                 <header>
                     <span id="modal-title" size={18}>
-                        <Text b size={18}>
+                        <span b size={18}>
                             {t('common.welcome-to-alexisdetrie-dev')}
-                        </Text>
+                        </span>
 
                     </span>
                 </header>
