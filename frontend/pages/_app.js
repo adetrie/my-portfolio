@@ -1,9 +1,8 @@
 import '../styles/globals.css'
 import '../i18n'
 
-function MyApp({Component, pageProps}) {
-    console.log("Backend url: ${process.env.PORTFOLIO_BACKEND_BASEURL}")
 
+function MyApp({Component, pageProps}) {
     return (
         <Component {...pageProps} />
     )

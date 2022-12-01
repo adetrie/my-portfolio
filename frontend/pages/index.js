@@ -1,5 +1,4 @@
 import {useEffect, useState} from "react";
-import AboutMe from "../components/screens/AboutMe";
 import Header from "../components/navigation/Header";
 import Skills from "../components/screens/Skills";
 import Experiences from "../components/screens/Experiences";
@@ -27,7 +26,6 @@ export default function Home() {
     const renderPortfolio = (
         <>
             <motion.div>
-                <AboutMe></AboutMe>
                 <NavigationScroller/>
                 <Header></Header>
                 <div className="body">

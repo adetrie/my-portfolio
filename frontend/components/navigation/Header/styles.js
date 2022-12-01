@@ -16,6 +16,21 @@ export const StyledHeader = styled.div`
     flex-wrap: nowrap;
   }
 
+  header-experiences {
+    position: fixed;
+    height: 10vh;
+    width: 100%;
+    background-color: #16123f;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    z-index: 100;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
   .logo {
     color: white;
     font-size: 1.3em;

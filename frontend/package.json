@@ -13,6 +13,7 @@
     "eslint": "8.27.0",
     "eslint-config-next": "13.0.3",
     "framer-motion": "^7.6.6",
+    "gsap": "^3.11.3",
     "i18next": "^22.0.5",
     "i18next-browser-languagedetector": "^7.0.1",
     "lottie-react": "^2.3.1",

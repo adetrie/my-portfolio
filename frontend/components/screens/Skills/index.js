@@ -7,7 +7,7 @@ const Skills = () => {
     }, []);
 
     return (
-        <StyledSkillsSection id={"skills"}>
+        <StyledSkillsSection id={"skills"} className="skills">
             Skills
             <br/>
             <br/>

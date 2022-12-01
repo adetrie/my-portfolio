@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {StyledNavigationScroller} from "./styles";
 import {useScroll, useSpring} from "framer-motion";
 
@@ -16,7 +16,6 @@ const NavgationScroller = () => {
     return (
         <StyledNavigationScroller style={{scaleX}}/>
     );
-
 };
 
 

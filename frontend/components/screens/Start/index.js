@@ -11,7 +11,7 @@ const Start = () => {
 
 
     return (
-        <StyledStartSection id={"home"} ref={startSectionRef}>
+        <StyledStartSection id="home" ref={startSectionRef}>
             <div className="architect">
                 <img src="https://via.placeholder.com/400x600.png"/>
                 <div className="description-ad">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
