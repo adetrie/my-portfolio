@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import {GlobalStyles} from "../../../styles/GlobalStyles";
 
 export const StyledExperiencesSection = styled.section`
   box-shadow: inset 2px 15px 15px -13px #000000;
-  background-color: #16123f;
+  background-color: ${GlobalStyles.colors.yellow};
 
   .experience-grid {
     position: relative;
@@ -14,25 +15,25 @@ export const StyledExperiencesSection = styled.section`
 
   .experience-grid > h1 {
     font-size: 2em;
-    color: white;
+    color: ${GlobalStyles.colors.white};
     margin: 90px 0 70px 40px;
   }
 
   .experience-item > div > h2 {
     font-size: 1.2em;
-    color: white;
+    color: ${GlobalStyles.colors.white};
     margin: 10px 10px 20px 10px;
   }
 
   .experience-item > div > h3 {
     font-size: 1em;
-    color: white;
+    color: ${GlobalStyles.colors.white};
     margin: 10px 10px 20px 10px;
   }
 
   .experience-item {
     backdrop-filter: blur(7px);
-    border: 1px solid #FFFFFF;
+    border: 1px solid ${GlobalStyles.colors.white};
     background-color: #ffffff10;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     display: grid;
@@ -45,7 +46,7 @@ export const StyledExperiencesSection = styled.section`
   .experience-item:before{
     content: '';
     position: absolute;
-    border-left: 1px solid #ffe26a;
+    border-left: 1px solid ${GlobalStyles.colors.yellow};
     transform: rotate(90deg);
     height: 25px;
     top: 50%;
@@ -61,7 +62,7 @@ export const StyledExperiencesSection = styled.section`
   }
 
   .experience-item-delimiter {
-    background-color: #ffe26a;
+    background-color: ${GlobalStyles.colors.yellow};
   }
 
   .experience-item-right {
@@ -116,11 +117,11 @@ export const StyledExperiencesSection = styled.section`
     }
 
     .experience-item-delimiter {
-      background-color: #ffe26a;
+      background-color: ${GlobalStyles.colors.yellow};
     }
     .experience-mobile-content > h1 {
       font-size: 2em;
-      color: white;
+      color: ${GlobalStyles.colors.white};
       margin: 90px 0 70px 40px;
     }
     

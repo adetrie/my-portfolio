@@ -1,6 +1,5 @@
 import {useEffect} from 'react';
 import {StyledExperiencesSection} from "./styles";
-import useWindowDimensions from "../../../hooks/useWindowsDimensions";
 import {gsap} from "gsap/dist/gsap";
 import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
 
@@ -9,22 +8,22 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Experiences = () => {
 
-    const {height, width} = useWindowDimensions();
 
-    ScrollTrigger.create({
-        trigger: document.querySelector("h1_experience"),
-        start: "top top",
-        // endTrigger: "#otherID",
-        end: "bottom 50%+=100px",
-        toggleActions: "play play play play",
-        animation: gsap.to(document.querySelector(".h1_experience"), {rotation: 27, x: 100, duration: 1})
-    })
+
 
     useEffect(() => {
     }, []);
 
+    const animHeaderSectionExperience = gsap.to(document.getElementById("#experiences"), {backgroundColor: "#fff"})
+    ScrollTrigger.create({
+        trigger: document.querySelector(".experience-item"),
+        animation: animHeaderSectionExperience,
+        toggleActions: "play complete play reverse",
+        onToggle: self => console.log("toggled, isActive:", self.isActive),
+    });
+
     return (
-        <StyledExperiencesSection id={"experiences"}>
+        <StyledExperiencesSection id="experiences">
             <div className="experience-grid display-none-onmobile">
                 <h1 className="h1_experience">Experiences</h1>
                 <div className="experience-item-delimiter"></div>

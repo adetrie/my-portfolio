@@ -3,6 +3,7 @@ import {t} from "i18next";
 import {StyledHeader} from "./styles";
 import OpenMenu from "../../../public/images/open-menu.svg"
 import CloseMenu from "../../../public/images/close-menu.svg"
+import Logo from "../../../public/images/logo.svg"
 import {gsap} from "gsap/dist/gsap";
 import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
 
@@ -16,7 +17,7 @@ const Header = () => {
     const [navLinks, setNavLinks] = useState(null)
     const header = useRef(null);
 
-    const navigationArrayKey = ["home",
+    const navigationArrayKey = [
         "experiences",
         "skills",
         "partners",
@@ -34,24 +35,26 @@ const Header = () => {
         setNavLinks(document.querySelector(".nav-links"))
         setMenuBurgerOpen(document.querySelector(".burger-icon"))
         setMenuBurgerClose(document.querySelector(".burger-icon-close"))
+
+        const animHeaderSectionExperience = gsap.to(header.current, {boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px", scrub: 1})
+        ScrollTrigger.create({
+            trigger: document.querySelector(".experiences"),
+            animation: animHeaderSectionExperience,
+            toggleActions: "play complete play reverse"
+        });
+
     }, []);
 
 
-    const animHeaderSectionExperience = gsap.to(document.querySelector(".header"), {backgroundColor: "#16123f"})
-    ScrollTrigger.create({
-        trigger: document.querySelector(".experience-item"),
-        animation: animHeaderSectionExperience,
-        toggleActions: "play complete play reverse"
-    });
+
 
     return (
         <StyledHeader>
             <header id="header" className="header" ref={header}>
-                <a href="#" className="logo">alexisdetrie.dev</a>
+                <Logo className="logo"></Logo>
                 <nav className="navbar">
                     <div className="nav-links">
                         <ul>
-                            <li key="toto" className="active"><a href="#start" className="nav-link">Home</a></li>
                             {
                                 navigationArrayKey.map((item, index) => {
                                     return <li
@@ -65,7 +68,7 @@ const Header = () => {
                             }
                         </ul>
                     </div>
-                    <div>
+                    <div className="toggle-menu">
                         <OpenMenu src="/public/images/open-menu.svg" alt="menu-mobile" className="burger-icon"
                                   onClick={toggleMenu}/>
                         <CloseMenu src="/public/images/close-menu.svg" alt="menu-mobile"

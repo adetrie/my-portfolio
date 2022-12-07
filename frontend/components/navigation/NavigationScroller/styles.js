@@ -8,7 +8,6 @@ export const StyledNavigationScroller = styled(motion.div)`
   left: 0;
   right: 0;
   height: 10px;
-  background: ${GlobalStyles.colors.lime};
   transform-origin: 0%;
   z-index: 1000;
 `;

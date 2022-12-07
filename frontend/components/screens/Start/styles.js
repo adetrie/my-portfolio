@@ -1,17 +1,22 @@
 import styled from 'styled-components';
+import {GlobalStyles} from "../../../styles/GlobalStyles";
 
 export const StyledStartSection = styled.section`
   display: flex;
   flex-direction: row;
   align-content: space-around;
-  background-color: red;
+  min-height: 100vh;
 
   .architect {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: min(12vh, 100%) 20px 0 10px;
-    background-color: #75c9b7;
+    background-color: ${GlobalStyles.colors.green};
+    min-height: 100vh;
+    justify-content: center;
+    color: ${GlobalStyles.colors.white};
+    width: 0;
   }
 
   .developer {
@@ -19,7 +24,10 @@ export const StyledStartSection = styled.section`
     flex-direction: column;
     align-items: center;
     padding: min(12vh, 100%) 20px 0 10px;
-    background-color: #ffe26a;
+    background-color: ${GlobalStyles.colors.white};
+    min-height: 100vh;
+    justify-content: center;
+    color: ${GlobalStyles.colors.fontGrey};
   }
 
   .description-ad {

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {GlobalStyles} from "../../../styles/GlobalStyles";
 
 export const StyledHeader = styled.div`
   header {
@@ -6,7 +7,6 @@ export const StyledHeader = styled.div`
     height: 10vh;
     width: 100%;
     background-color: rgba(255, 255, 255, 0.125);
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     z-index: 100;
     margin: 0 auto;
     display: flex;
@@ -14,34 +14,25 @@ export const StyledHeader = styled.div`
     justify-content: space-between;
     flex-direction: row;
     flex-wrap: nowrap;
+    min-height: 60px;
   }
-
-  header-experiences {
-    position: fixed;
-    height: 10vh;
-    width: 100%;
-    background-color: #16123f;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    z-index: 100;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-    flex-wrap: nowrap;
-  }
-
   .logo {
-    color: white;
-    font-size: 1.3em;
-    padding: 0 0 0 15px;
+    margin-left: 50px;
+    height: 8vh;
+    width: 8vw;
+  }
+  .toggle-menu {
+    min-width: 170px;
+    max-width: 230px;
   }
 
   .navbar {
+    display: block;
+    padding-right: 25px;
   }
 
   .navbar a {
-    color: white;
+    color: ${GlobalStyles.colors.fontGrey};
   }
 
   .navbar .nav-links ul {
@@ -53,8 +44,24 @@ export const StyledHeader = styled.div`
   }
 
   .navbar .nav-links ul li.active a {
-    color: #ffe26a;
+    color: ${GlobalStyles.colors.yellow};
     text-decoration: underline;
+    animation-delay: 0.6s;
+    -webkit-animation-fill-mode: forwards;
+
+    &:first-child{
+      animation-delay: 0.7s;
+
+    }
+
+    &:last-child{
+      color: ${GlobalStyles.colors.darkBlue};
+      animation-delay: 0.5s;
+    }
+  }
+
+
+  h1 span{
   }
 
 
@@ -70,9 +77,9 @@ export const StyledHeader = styled.div`
 @media (max-width: 1050px) {
 
   .logo {
-    color: white;
-    font-size: 1.6em;
-    padding: 0 0 0 15px;
+    display: block;
+    min-width: 170px;
+    max-width: 230px;
   }
 
   .nav-links {
@@ -94,7 +101,7 @@ export const StyledHeader = styled.div`
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
-    color: #75c9b7;
+    color: ${GlobalStyles.colors.lightGreen};
   }
 
   .navbar .nav-links ul li {
@@ -103,13 +110,13 @@ export const StyledHeader = styled.div`
   }
 
   .navbar .nav-links ul li a {
-    color: #16123f;
+    color: ${GlobalStyles.colors.darkBlue};
     font-size: 1.1em;
     transition: all .1s ease-in;
   }
 
   .navbar .nav-links ul li a:hover {
-    color: #16123f;
+    color: ${GlobalStyles.colors.darkBlue};
     font-size: 1.2em;
     text-decoration: underline;
     transition: all .1s ease-in;
@@ -117,13 +124,13 @@ export const StyledHeader = styled.div`
 
 
   .navbar .nav-links ul li.active a {
-    color: #75c9b7;
+    color: ${GlobalStyles.colors.lightGreen};
     text-decoration: underline;
     font-size: 1.3em;
   }
 
   .navbar .nav-links ul li.active a:hover {
-    color: #75c9b7;
+    color: #${GlobalStyles.colors.lightGreen};
     text-decoration: underline;
     font-size: 1.4em;
   }
